@@ -7,6 +7,7 @@ from skyfield import almanac
 import os
 import scipy
 
+
 def main():
     """
     Writes an observation schedule to a text file.
