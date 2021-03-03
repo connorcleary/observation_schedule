@@ -139,10 +139,8 @@ def find_events(target_satellites, location, window, time_zone):
             t: array of time objects corresponding to each event
     """
     # set timezone and window in correct time format
-    zone = timezone(time_zone)
-    now = zone.localize(dt.datetime.now())
-    midday = now.replace(day=int(window[0][2]), minute=0, second=0,
-                         microsecond=0)
+    midday = dt.datetime(window[0][0], window[0][1], int(np.floor(window[0][2])),
+                         12, tzinfo = timezone(time_zone))
     next_midday = midday + dt.timedelta(days=1)
     ts = load.timescale()
     t0 = ts.from_datetime(midday)
@@ -228,10 +226,8 @@ def find_night_events(aos, los, location, time_zone, window):
     """
 
     # this is all required to find astronomical events
-    zone = timezone(time_zone)
-    now = zone.localize(dt.datetime.now())  # still  wrong todo
-    midday = now.replace(day=int(window[0][2]), minute=0, second=0,
-                         microsecond=0)
+    midday = dt.datetime(window[0][0], window[0][1], int(np.floor(window[0][2])),
+                         12, tzinfo = timezone(time_zone))
     next_midday = midday + dt.timedelta(days=1)
 
     ts = load.timescale()
