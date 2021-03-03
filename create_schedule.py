@@ -5,7 +5,6 @@ import datetime as dt
 from pytz import timezone
 from skyfield import almanac
 import os
-import scipy
 
 
 def main():
