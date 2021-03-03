@@ -10,6 +10,10 @@ To run:
 2. If created, activate venv with command: `env\scripts\activate.bat`
 3. Install all requirements with the command: `pip install -r  requirements.txt`
 4. Create configuration file with desired settings
-5. Run code with command:
-`create_schedule.py`
+5. Run code with command: `create_schedule.py`
+
+See the word doc for more information 
+
+
+
 
