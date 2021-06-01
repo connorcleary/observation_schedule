@@ -40,11 +40,13 @@ def get_config_data(filename):
     with open("%s" % filename, "r") as f:
         t0 = [int(x) for x in f.readline().split(',')]
         targets = f.readline().split(';')
+        targets_stripped = list()
+        for target in targets: targets_stripped.append(target.strip('\n'))
         longitude = f.readline()
         latitude = f.readline()
         time_zone = f.readline().strip('\n')
 
-    return t0, targets, longitude, latitude, time_zone
+    return t0, targets_stripped, longitude, latitude, time_zone
 
 
 def get_data():
@@ -154,7 +156,7 @@ def find_events(target_satellites, location, window, time_zone):
     # find events for each satellite
     for idx, satellite in enumerate(target_satellites):
         t[idx], events[idx] = satellite.find_events(sight, t0, t1,
-                                                    altitude_degrees=20.0)
+                                                    altitude_degrees=10.0)
 
     return t, events
 
